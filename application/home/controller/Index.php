@@ -2,10 +2,11 @@
 namespace app\home\controller;
 
 use think\Controller ;
+use think\Db;
 
 class Index extends Controller
 {
-	// load view 
+	// load view
   public function index()
   {
 		return $this->fetch('index/index');
@@ -41,6 +42,12 @@ class Index extends Controller
     public function product_info()
   {
 		return $this->fetch('product_info');
+  }
+
+  public function new_message()
+  {
+      $result = Db::execute('insert into home_message (title, name, phone, email, message) values ("1", "2", "3", "4", "5")');
+      dump($result);
   }
 
 }
