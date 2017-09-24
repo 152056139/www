@@ -76,17 +76,19 @@ $(document).ready(function(){
         </tr>
         </thead>
         <tbody>
+        {volist name="messages", id="message" key="key"}
         <tr>
         <td><input name="" type="checkbox" value="" /></td>
-        <td>20130908</td>
-        <td>王金平幕僚：马英九声明字字见血 人活着没意思</td>
-        <td>admin</td>
-        <td>电话</td>
-        <td>邮箱</td>
-        <td>2013-09-09 15:05</td>
-        <td>已审核</td>
+        <td>{$key}</td>
+        <td>{$message->getData('home_message_title')}</td>
+        <td>{$message->getData('home_message_name')}</td>
+        <td>{$message->getData('home_message_phone')}</td>
+        <td>{$message->getData('home_message_email')}</td>
+        <td>{$message->getData('home_message_time')}</td>
+        <td>{$message->getData('home_message_audit')}</td>
         <td><a href="#" class="tablelink">查看</a>   |  <a href="#" class="tablelink"> 删除</a></td>
         </tr>
+        {/volist}
         </tbody>
     </table>
 
