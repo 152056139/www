@@ -119,7 +119,7 @@ $(document).ready(function(){
                 <td>{$message->getData('home_message_name')}</td>
                 <td>{$message->getData('home_message_title')}</td>
                 <td>{$message->getData('home_message_time')}</td>
-                <td>{$message->getData('home_message_audit')}</td>
+                <td>{$home_message_audit}</td>
                 <td style="text-align:center;"><a href="#" class="tablelink">   查看 </a>|<a href="/admin/home.Message/delete_message/?home_message_no=<?php echo $message->getData('home_message_no');?>" class="tablelink">  删除  </a></td>
                 <td><input name="" type="checkbox" value="" /></td>
             </tr>
