@@ -68,37 +68,8 @@ $(document).ready(function(){
     </div>
 
     <div class="rightinfo">
-    <div class="tools">
-        <ul class="seachform" style="display:inline-block">
-            <li><label>综合查询</label><input name="" type="text" class="scinput" /></li>
-            <li><label>日期</label>
-            <div class="vocation">
-            <select class="select3">
-            <option>全部</option>
-            <option>今天</option>
-            <option>本周</option>
-            <option>本月</option>
-            <option>今年</option>
-            </select>
-            </div>
-            </li>
-
-            <li><label>审核</label>
-            <div class="vocation">
-            <select class="select3">
-            <option>全部</option>
-            <option>已审核</option>
-            <option>未审核</option>
-            </select>
-            </div>
-            </li>
-
-            <li><label>&nbsp;</label><input name="" type="button" class="scbtn" value="查询"/></li>
-        </ul>
-        <ul class="toolbar1">
-            <li class="click"><span><img src="/admin/images/t03.png" /></span>删除</li>
-        </ul>
-    </div>
+    <!-- 包含tools，搜索的表单-->
+    {include file="../application/admin/view/home/_message/tools.html"}
 
     <table class="tablelist">
     	<thead>
@@ -108,8 +79,8 @@ $(document).ready(function(){
                 <th>标题</th>
                 <th>时间</th>
                 <th>是否审核</th>
+                <th>消息类型</th>
                 <th>操作</th>
-                <th><input name="" type="checkbox" value="" checked="checked"/></th>
             </tr>
         </thead>
         <tbody>
@@ -120,8 +91,8 @@ $(document).ready(function(){
                 <td>{$list->getData('home_message_title')}</td>
                 <td>{$list->getData('home_message_time')}</td>
                 <td>{$list->home_message_audit}</td>
+                <td>{$list->home_message_type}</td>
                 <td style="text-align:center;"><a href="#" class="tablelink">   查看 </a>|<a href="/admin/home.Message/delete_message/?home_message_no=<?php echo $list->getData('home_message_no');?>" class="tablelink">  删除  </a></td>
-                <td><input name="" type="checkbox" value="" /></td>
             </tr>
             {/volist}
         </tbody>

@@ -23,6 +23,7 @@
 	        $Message->home_message_phone = $postData['phone'];
 	        $Message->home_message_email = $postData['email'];
 	        $Message->home_message_content = $postData['content'];
+			$Message->home_message_type = 0;
 	        $Message->save();
 	        $this->success("留言成功");
 	    }

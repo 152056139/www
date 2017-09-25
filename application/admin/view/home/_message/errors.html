@@ -68,35 +68,8 @@ $(document).ready(function(){
     </div>
 
     <div class="rightinfo">
-    <div class="tools">
-        <ul class="seachform" style="display:inline-block">
-            <li><label>综合查询</label><input name="" type="text" class="scinput" /></li>
-            <li><label>日期</label>
-            <div class="vocation">
-            <select class="select3">
-            <option>全部</option>
-            <option>今天</option>
-            <option>本周</option>
-            <option>本月</option>
-            <option>今年</option>
-            </select>
-            </div>
-            </li>
-
-            <li><label>审核</label>
-            <div class="vocation">
-            <select class="select3">
-            <option>全部</option>
-            <option>已审核</option>
-            <option>未审核</option>
-            </select>
-            </div>
-            </li>
-
-            <li><label>&nbsp;</label><input name="" type="button" class="scbtn" value="查询"/></li>
-        </ul>
-
-    </div>
+    <!-- 包含tools，搜索的表单-->
+    {include file="../application/admin/view/home/_message/tools.html"}
 
 
 
