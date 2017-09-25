@@ -117,17 +117,19 @@ h2{font-weight:normal;}
 /*page*/
 .pagin{position:relative;margin-top:10px;padding:0 12px;}
 .pagin .blue{color:#056dae;font-style:normal;}
-.pagin .paginList{position:absolute;right:12px;top:0;}
-.pagin .paginList .paginItem{float:left;}
-.pagin .paginList .paginItem a{float:left;width:31px;height:28px;border:1px solid #DDD; text-align:center;line-height:30px;border-left:none;color:#3399d5;}
-.pagin .paginList .paginItem:first-child a{border-left:1px solid #DDD;}
-.pagin .paginList .paginItem:first-child a{border-bottom-left-radius:5px;border-top-left-radius:5px;}
-.pagin .paginList .paginItem:last-child a{border-bottom-right-radius:5px;border-top-right-radius:5px;}
-.pagin .paginList .paginItem.current,.pagin .paginList .paginItem.current a{background:#f5f5f5; cursor:default;color:#737373;}
-.pagin .paginList .paginItem:hover{background:#f5f5f5;}
-.pagin .paginList .paginItem.more,.pagin .paginList .paginItem.more a:hover{ cursor:default;}
-.pagin .paginList .paginItem.more:hover{background:#FFF;}
-.pagin .paginList .paginItem.more a{color:#737373;}
+.pagin .pagination{position:absolute;right:12px;top:0;}
+.pagin .pagination li {float:left;}
+.pagin .pagination li  span{float:left;width:31px;height:28px;border:1px solid #DDD; text-align:center;line-height:30px;border-left:none;color:#3399d5;}
+.pagin .pagination li  a{float:left;width:31px;height:28px;border:1px solid #DDD; text-align:center;line-height:30px;border-left:none;color:#3399d5;}
+.pagin .pagination li :first-child a{border-left:1px solid #DDD;}
+.pagin .pagination li:first-child a{border-bottom-left-radius:5px;border-top-left-radius:5px;}
+.pagin .pagination li:last-child a{border-bottom-right-radius:5px;border-top-right-radius:5px;}
+.pagin .pagination li:active, .pagin .pagination li.active span{background:#f5f5f5; cursor:default;color:#737373;}
+.pagin .pagination li:disabled, .pagin .pagination li.disabled span{background:#f5f5f5; cursor:default;color:#737373;}
+.pagin .pagination li:hover{background:#f5f5f5;}
+.pagin .pagination li.more, .pagin .pagination li.more a:hover{ cursor:default;}
+.pagin .pagination li.more:hover{background:#FFF;}
+.pagin .pagination li.more a{color:#737373;}
 .pagepre{background:url(../images/pre.gif) no-repeat center center; width:31px; height:28px;}
 .pagenxt{background:url(../images/next.gif) no-repeat center center; width:31px; height:28px;}
 
@@ -217,7 +219,7 @@ h2{font-weight:normal;}
 .tooladd{margin-top:25px; width:20px; height:20px; float:left; display:block;}
 
 /*error 404*/
-.error{background:url(../images/404.png) no-repeat; width:490px; margin-top:75px;padding-top:65px;}
+.error{background:url(../images/404.png) no-repeat; width:490px; margin-top:75px;padding-top:65px;  position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);}
 .error h2{font-size:22px; padding-left:154px;}
 .error p{padding-left:154px; line-height:35px;color:#717678;}
 .reindex{padding-left:154px;}
