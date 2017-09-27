@@ -42,16 +42,29 @@
         {
             //获取表单传来的检索信息
             $postData = Request::instance()->post();
+            $messages = MessageModel::all();
             //判断是否被审核
+            /*
             if($postData['audit'] == 'all')
             {
-                $messages = MessageModel::all();
+                $messages = $messages;
             }
             else
             {
-                $messages = MessageModel::all(['home_message_audit'=>$postData['audit']]);
+                //$messages->where('home_message_audit',$postData['audit']);
+                //$messages = $messages->{'home_message_audit'=>$postData['audit']};
             }
-
+            //判断消息的类型
+            if($postData['type'] == 'all')
+            {
+                $messages = $messages;
+            }
+            else
+            {
+                //$messages->where('home_message_type',$postData['type']);
+                //$messages = MessageModel::all(['home_message_type'=>$postData['type']]);
+            }
+            */
             //判断检索的结果是否为空
             if($messages != null)
             {

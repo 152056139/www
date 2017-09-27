@@ -1,6 +1,6 @@
 <div class="tools">
-    <form action="/admin/home.Message/find_message" method="post">
     <ul class="seachform" style="display:inline-block">
+    <form action="/admin/home.Message/find_message" method="post">
         <li><label>综合查询</label><input name="" type="text" class="scinput" /></li>
         <li><label>日期</label>
         <div class="vocation">
@@ -27,16 +27,20 @@
 
         <li><label>类型</label>
         <div class="vocation">
-        <select class="select3" name="audit">
+        <select class="select3" name="type">
         <option value="all">全部</option>
-        <option value="0">官网留言</option>
-        <option value="1">原料报价</option>
-        <option value="2">新闻动态</option>
+        <option value=0>官网留言</option>
+        <option value=1>原料报价</option>
+        <option value=2>新闻动态</option>
         </select>
         </div>
         </li>
 
         <li><label>&nbsp;</label><input name="" type="submit" class="scbtn" value="查询"  /></li>
-    </ul>
     </form>
+    </ul>
+
+    <ul class="toolbar1">
+    <li><span><img src="/admin/images/t05.png" /></span>设置</li>
+    </ul>
 </div>
