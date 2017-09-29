@@ -3,6 +3,7 @@
 
     use think\Controller;
     use think\Request;
+    use think\Db;
     use app\admin\model\home\Message as MessageModel;
 
     class Message extends Controller
@@ -20,11 +21,11 @@
             {
                 foreach ($messages as $key => $message)
                 {
-                    $list = $message->paginate(10);
+                    $list = $message->paginate(2);
                     $page = $list->render();
                 }
                 //其他的数据全部原样返回给页面
-                $this->assign('list', $messages);
+                $this->assign('list', $list);
                 $this->assign('page', $page);
                 //取回打包的数据并且返回给页面
                 return $this->fetch('message_list');
@@ -40,7 +41,14 @@
         **/
         public function find_message()
         {
-            
+            //提取全部的数据
+            $messages = Db::table('home_message')->where('home_message_type',1)->where('home_message_audit',0)->paginate(2);
+            $page = $messages->render();
+            //其他的数据全部原样返回给页面
+            $this->assign('list', $messages);
+            $this->assign('page',$page);
+            //取回打包的数据并且返回给页面
+            return $this->fetch('find_message');
         }
         /*
         **删除留言
