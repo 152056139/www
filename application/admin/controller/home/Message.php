@@ -18,13 +18,13 @@
             $messages = MessageModel::all();
             if($messages != null)
             {
-                foreach($messages as $key =>$message)
+                foreach ($messages as $key => $message)
                 {
                     $list = $message->paginate(10);
                     $page = $list->render();
                 }
                 //其他的数据全部原样返回给页面
-                $this->assign('list', $list);
+                $this->assign('list', $messages);
                 $this->assign('page', $page);
                 //取回打包的数据并且返回给页面
                 return $this->fetch('message_list');
@@ -40,49 +40,7 @@
         **/
         public function find_message()
         {
-            //获取表单传来的检索信息
-            $postData = Request::instance()->post();
-            $messages = MessageModel::all();
-            //判断是否被审核
-            /*
-            if($postData['audit'] == 'all')
-            {
-                $messages = $messages;
-            }
-            else
-            {
-                //$messages->where('home_message_audit',$postData['audit']);
-                //$messages = $messages->{'home_message_audit'=>$postData['audit']};
-            }
-            //判断消息的类型
-            if($postData['type'] == 'all')
-            {
-                $messages = $messages;
-            }
-            else
-            {
-                //$messages->where('home_message_type',$postData['type']);
-                //$messages = MessageModel::all(['home_message_type'=>$postData['type']]);
-            }
-            */
-            //判断检索的结果是否为空
-            if($messages != null)
-            {
-                foreach($messages as $key =>$message)
-                {
-                    $list = $message->paginate(10);
-                    $page = $list->render();
-                }
-                //其他的数据全部原样返回给页面
-                $this->assign('list', $list);
-                $this->assign('page', $page);
-                //取回打包的数据并且返回给页面
-                return $this->fetch('message_list');
-            }
-            else
-            {
-                return $this->fetch('errors');
-            }
+            
         }
         /*
         **删除留言

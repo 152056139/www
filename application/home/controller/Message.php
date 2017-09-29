@@ -1,7 +1,6 @@
 <?php
 	namespace app\home\controller;
 
-	use think\Db;
 	use think\Controller;
 	use think\Request;
 	use app\home\model\Message as MessageModel;
