@@ -3,6 +3,7 @@
 
     use think\Controller;
     use think\Request;
+    use think\Session;
     use think\Db;
     use app\admin\model\home\Message as MessageModel;
 
@@ -41,14 +42,63 @@
         **/
         public function find_message()
         {
-            //提取全部的数据
-            $messages = Db::table('home_message')->where('home_message_type',1)->where('home_message_audit',0)->paginate(2);
-            $page = $messages->render();
-            //其他的数据全部原样返回给页面
-            $this->assign('list', $messages);
-            $this->assign('page',$page);
-            //取回打包的数据并且返回给页面
-            return $this->fetch('find_message');
+            //获取表单传过来的查询条件
+            $param = Request::instance()->param();
+            //如果点的是查询
+            var_dump($param);
+            if(!isset($param['page'])){
+                //对查询条件进行处理
+
+                //处理综合查询
+                if($param['integrated'] == null){
+                    echo "综合查询是空的";
+                }
+                //处理时间
+
+                //处理是否审核
+                if($param['audit'] == 'all'){
+                    Session::set('audit', -1);
+                    Session::set('method_audit', '>');
+                }else{
+                    Session::set('audit', $param['audit']);
+                    Session::set('method_audit', '=');
+                }
+
+                //处理类型
+                if($param['type'] == 'all'){
+                    Session::set('type', -1);
+                    Session::set('method_type', '>');
+                }else{
+                    Session::set('type', $param['type']);
+                    Session::set('method_type', '=');
+                }
+                var_dump(Session::get());
+                //处理时间
+
+            }
+
+            //获取留言
+            $messages = Db::table('home_message')
+                ->where('home_message_audit', Session::get('method_audit'), Session::get('audit'))
+                ->where('home_message_type', Session::get('method_type'), Session::get('type'))
+                ->paginate(2);
+            //获取到的数量
+            $count = count($messages);
+            //判断是否查询结果为空
+            if(count($messages) != 0) {
+                //分页
+                $page = $messages->render();
+                //其他的数据全部原样返回给页面
+                $this->assign('list', $messages);
+                $this->assign('count',$count);
+                $this->assign('page',$page);
+                //取回打包的数据并且返回给页面
+                return $this->fetch('find_message');
+            }
+            else {
+                return $this->fetch('errors');
+            }
+
         }
         /*
         **删除留言

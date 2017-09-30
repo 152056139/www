@@ -23,50 +23,5 @@
         }
 
 
-        //是否审核查询
-        protected function scopeAudit($query)
-        {
-            $query->where('home_message_audit', 0);
-        }
-
-        //类型查询
-        protected function scopeType($query)
-        {
-            $query->where('home_message_type', 0);
-        }
-        //时间查询
-        protected function scopeTime($query)
-        {
-            $query->where('home_message_time', '1');
-        }
-        //标题
-        protected function scopeTitle($query)
-        {
-            $query->where('home_message_title', '1');
-        }
-        //发件人
-        protected function scopeName($query)
-        {
-            $query->where('home_message_name', '1');
-        }
-        //手机号
-        protected function scopePhone($query)
-        {
-            $query->where('home_message_phone', '1');
-        }
-        //邮箱
-        protected function scopeEmail($query)
-        {
-            $query->where('home_message_email', '1');
-        }
-        //内容
-        protected function scopeContent($query)
-        {
-            $query->where('home_message_content', '1');
-        }
-        //审核人
-        protected function scopeAuditer($query)
-        {
-            $query->where('home_message_auditer', '1');
-        }
+        
     }
