@@ -3,7 +3,7 @@
 
     use think\Controller;
     use think\Request;
-    use think\Session;
+    use think\Cookie;
     use think\Db;
     use app\admin\model\home\Message as MessageModel;
 
@@ -45,42 +45,39 @@
             //获取表单传过来的查询条件
             $param = Request::instance()->param();
             //如果点的是查询
-            var_dump($param);
             if(!isset($param['page'])){
                 //对查询条件进行处理
 
                 //处理综合查询
                 if($param['integrated'] == null){
-                    echo "综合查询是空的";
                 }
                 //处理时间
 
                 //处理是否审核
                 if($param['audit'] == 'all'){
-                    Session::set('audit', -1);
-                    Session::set('method_audit', '>');
+                    Cookie::set('audit', -1);
+                    Cookie::set('method_audit', '>');
                 }else{
-                    Session::set('audit', $param['audit']);
-                    Session::set('method_audit', '=');
+                    Cookie::set('audit', $param['audit']);
+                    Cookie::set('method_audit', '=');
                 }
 
                 //处理类型
                 if($param['type'] == 'all'){
-                    Session::set('type', -1);
-                    Session::set('method_type', '>');
+                    Cookie::set('type', -1);
+                    Cookie::set('method_type', '>');
                 }else{
-                    Session::set('type', $param['type']);
-                    Session::set('method_type', '=');
+                    Cookie::set('type', $param['type']);
+                    Cookie::set('method_type', '=');
                 }
-                var_dump(Session::get());
                 //处理时间
 
             }
 
             //获取留言
             $messages = Db::table('home_message')
-                ->where('home_message_audit', Session::get('method_audit'), Session::get('audit'))
-                ->where('home_message_type', Session::get('method_type'), Session::get('type'))
+                ->where('home_message_audit', Cookie::get('method_audit'), Cookie::get('audit'))
+                ->where('home_message_type', Cookie::get('method_type'), Cookie::get('type'))
                 ->paginate(2);
             //获取到的数量
             $count = count($messages);

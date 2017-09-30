@@ -1,46 +1,77 @@
 <div class="tools">
     <ul class="seachform" style="display:inline-block">
-    <form action="<?php echo WEB_PATH?>/admin/home.Message/find_message" method="post">
-        <li><label>综合查询</label><input name="integrated" type="text" class="scinput" /></li>
-        <li><label>日期</label>
-        <div class="vocation">
-        <select class="select3" name="time">
-        <option>全部</option>
-        <option>今天</option>
-        <option>本周</option>
-        <option>本月</option>
-        <option>今年</option>
-        <option>自定义</option>
-        </select>
-        </div>
-        </li>
+        <form action="<?php echo WEB_PATH?>/admin/home.Message/find_message" method="post">
+            <li><label>综合查询</label><input name="integrated" type="text" class="scinput" /></li>
+            <li><label>日期</label>
+                <div class="vocation">
+                    <select class="select3" name="time">
+                        <option>全部</option>
+                        <option>今天</option>
+                        <option>本周</option>
+                        <option>本月</option>
+                        <option>今年</option>
+                        <option>自定义</option>
+                    </select>
+                </div>
+            </li>
 
-        <li><label>审核</label>
-        <div class="vocation">
-        <select class="select3" name="audit">
-        <option value="all">全部</option>
-        <option value="1">已审核</option>
-        <option value="0">未审核</option>
-        </select>
-        </div>
-        </li>
+            <li><label>审核</label>
+                <div class="vocation">
+                    <select class="select3" name="audit" id="audit">
+                        <option value="all">全部</option>
+                        <option value="1">已审核</option>
+                        <option value="0">未审核</option>
+                    </select>
+                </div>
+            </li>
 
-        <li><label>类型</label>
-        <div class="vocation">
-        <select class="select3" name="type">
-        <option value="all">全部</option>
-        <option value=0>官网留言</option>
-        <option value=1>原料报价</option>
-        <option value=2>新闻动态</option>
-        </select>
-        </div>
-        </li>
+            <li><label>类型</label>
+                <div class="vocation">
+                    <select class="select3" name="type" id="type">
+                        <option value="all">全部</option>
+                        <option value="0">官网留言</option>
+                        <option value="1">原料报价</option>
+                        <option value="2">新闻动态</option>
+                    </select>
+                </div>
+            </li>
 
-        <li><label>&nbsp;</label><input name="" type="submit" class="scbtn" value="查询"  /></li>
-    </form>
+            <li><label>&nbsp;</label><input name="" type="submit" class="scbtn" value="查询"  /></li>
+        </form>
     </ul>
 
     <ul class="toolbar1">
-    <li><span><img src="<?php echo WEB_PATH?>/admin/images/t05.png" /></span>设置</li>
+        <li><span><img src="<?php echo WEB_PATH?>/admin/images/t05.png" /></span>设置</li>
     </ul>
 </div>
+<script>
+    //获取cookie的函数
+    function getCookie(cname)
+    {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0; i<ca.length; i++)
+        {
+        var c = ca[i].trim();
+        if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+        }
+        return "";
+    }
+    //动态设置选中
+    function set_select_checked(selectId, checkValue){
+        var select = document.getElementById(selectId);
+
+        for (var i = 0; i < select.options.length; i++){
+            if (select.options[i].value == checkValue){
+                select.options[i].selected = true;
+                break;
+            }
+        }
+    }
+    //获取现在系统里的cookie
+    var param = document.cookie;
+    var audit = getCookie('audit');
+    var type = getCookie('type');
+    set_select_checked('audit',audit);
+    set_select_checked('type',type);
+</script>
