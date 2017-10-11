@@ -73,12 +73,8 @@
                 //处理时间
 
             }
-
             //获取留言
-            $messages = Db::table('home_message')
-                ->where('home_message_audit', Cookie::get('method_audit'), Cookie::get('audit'))
-                ->where('home_message_type', Cookie::get('method_type'), Cookie::get('type'))
-                ->paginate(2);
+            $messages = MessageModel::find_message();
             //获取到的数量
             $count = count($messages);
             //判断是否查询结果为空

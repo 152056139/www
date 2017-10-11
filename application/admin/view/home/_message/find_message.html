@@ -92,7 +92,7 @@ $(document).ready(function(){
                 <td>{$list['home_message_time']}</td>
                 <td>{$list['home_message_audit']}</td>
                 <td>{$list['home_message_type']}</td>
-                <td style="text-align:center;"><a href="#" class="tablelink">   标记 </a>|<a href="#" class="tablelink">   查看 </a>|<a href="/admin/home.Message/delete_message/?home_message_no=<?php echo $list['home_message_no']?>" class="tablelink">  删除  </a></td>
+                <td style="text-align:center;"><a href="#" class="tablelink">   标记 </a>|<a href="#" class="tablelink">   查看 </a>|<a href="<?php echo WEB_PATH?>/admin/home.Message/delete_message/?home_message_no=<?php echo $list['home_message_no']?>" class="tablelink">  删除  </a></td>
             </tr>
             {/volist}
         </tbody>
