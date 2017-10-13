@@ -16,6 +16,8 @@
         **/
         public function message_list()
         {
+            //标记方法类型
+            Cookie::set('page_type', 'list');
             //提取全部的数据
             $messages = MessageModel::all();
             if($messages != null)
@@ -42,6 +44,8 @@
         **/
         public function find_message()
         {
+            //标记方法类型
+            Cookie::set('page_type', 'find');
             //获取表单传过来的查询条件
             $param = Request::instance()->param();
             //如果点的是查询
@@ -86,13 +90,15 @@
                 $this->assign('count',$count);
                 $this->assign('page',$page);
                 //取回打包的数据并且返回给页面
-                return $this->fetch('find_message');
+                return $this->fetch('message_list');
             }
             else {
                 return $this->fetch('errors');
             }
 
         }
+
+
         /*
         **删除留言
         **
@@ -113,11 +119,11 @@
         }
 
         /*
-        **查看留言
+        **查看留言详情
         **
         **/
-        public function detail_message()
+        public function message_detail()
         {
-
+            return $this->fetch('message_detail');
         }
     }
