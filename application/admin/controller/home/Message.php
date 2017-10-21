@@ -24,7 +24,7 @@
             {
                 foreach ($messages as $key => $message)
                 {
-                    $list = $message->paginate(2);
+                    $list = $message->paginate(10);
                     $page = $list->render();
                 }
                 //其他的数据全部原样返回给页面
@@ -79,15 +79,12 @@
             }
             //获取留言
             $messages = MessageModel::find_message();
-            //获取到的数量
-            $count = count($messages);
             //判断是否查询结果为空
             if(count($messages) != 0) {
                 //分页
                 $page = $messages->render();
                 //其他的数据全部原样返回给页面
-                $this->assign('list', $messages);
-                $this->assign('count',$count);
+                $this->assign('lists', $messages);
                 $this->assign('page',$page);
                 //取回打包的数据并且返回给页面
                 return $this->fetch('message_list');

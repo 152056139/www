@@ -29,24 +29,14 @@
         {
 
             $messages = Db::table('home_message')
+                ->alias('a')
+                ->join('home_message_type b', 'b.home_message_type_no = a.home_message_type')
+                ->join('home_message_audit c', 'c.home_message_audit_no = a.home_message_audit')
                 ->where('home_message_audit', Cookie::get('method_audit'), Cookie::get('audit'))
                 ->where('home_message_type', Cookie::get('method_type'), Cookie::get('type'))
-                ->paginate(2);
+                ->paginate(10);
             //返回
             return $messages;
         }
-        //测试尝试自己使用DB类实现查询功能
-        public static function find_message1()
-        {
-
-            $messages = Db::table('home_message')
-                ->where('home_message_audit', Cookie::get('method_audit'), Cookie::get('audit'))
-                ->where('home_message_type', Cookie::get('method_type'), Cookie::get('type'))
-                ->page('1,2')
-                ->select();
-            //返回
-            return $messages;
-        }
-
 
     }

@@ -71,10 +71,10 @@ $(document).ready(function(){
     <!-- 包含tools，搜索的表单-->
     {include file="../application/admin/view/home/_message/tools.html"}
 
-<?php
-    use think\Cookie;
-    if(Cookie::get('page_type')=='list'):
-?>
+    <?php
+        use think\Cookie;
+        if(Cookie::get('page_type')=='list'):
+    ?>
     <table class="tablelist">
     	<thead>
         	<tr>
@@ -106,7 +106,6 @@ $(document).ready(function(){
     </table>
 
     <div class="pagin">
-    	<div class="message">共<i class="blue">{$list->count()}</i>条记录</div>
         {$page}
 
     </div>
@@ -125,22 +124,23 @@ $(document).ready(function(){
             </tr>
         </thead>
         <tbody>
-            {volist name="list", id="list" key="key"}
+            {volist name="lists", id="list" key="key"}
             <tr>
                 <td>{$key}</td>
                 <td>{$list['home_message_name']}</td>
                 <td>{$list['home_message_title']}</td>
                 <td>{$list['home_message_time']}</td>
-                <td>{$list['home_message_audit']}</td>
-                <td>{$list['home_message_type']}</td>
-                <td style="text-align:center;"><a href="#" class="tablelink"> 查看 </a>|<a href="<?php echo WEB_PATH?>/admin/home.Message/delete_message/?home_message_no=<?php echo $list['home_message_no']?>" class="tablelink">  删除  </a></td>
+                <td>{$list['home_message_audit_name']}</td>
+                <td>{$list['home_message_type_name']}</td>
+                <td style="text-align:center;">
+                    <a href="<?php echo WEB_PATH?>/admin/home.Message/message_detail" class="tablelink"> 查看 </a>|
+                    <a href="<?php echo WEB_PATH?>/admin/home.Message/delete_message/?home_message_no=<?php echo $list['home_message_no']?>" class="tablelink">  删除  </a></td>
             </tr>
             {/volist}
         </tbody>
     </table>
 
     <div class="pagin">
-        <div class="message">共<i class="blue">{$count}</i>条记录</div>
         {$page}
 
     </div>
