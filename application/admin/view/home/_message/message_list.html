@@ -91,14 +91,14 @@ $(document).ready(function(){
             {volist name="list", id="list" key="key"}
             <tr>
                 <td>{$key}</td>
-                <td>{$list->home_message_name}</td>
-                <td>{$list->home_message_title}</td>
-                <td>{$list->home_message_time}</td>
-                <td>{$list->home_message_audit}</td>
-                <td>{$list->home_message_type}</td>
+                <td>{$list->message_name}</td>
+                <td>{$list->message_title}</td>
+                <td>{$list->message_time}</td>
+                <td>{$list->message_audit}</td>
+                <td>{$list->message_type}</td>
                 <td style="text-align:center;">
                     <a href="<?php echo WEB_PATH?>/admin/home.Message/message_detail" class="tablelink"> 查看 </a>|
-                    <a href="<?php echo WEB_PATH?>/admin/home.Message/delete_message/?home_message_no=<?php echo $list->getData('home_message_no');?>" class="tablelink">  删除  </a>
+                    <a href="<?php echo WEB_PATH?>/admin/home.Message/delete_message/?message_no=<?php echo $list->getData('message_no');?>" class="tablelink">  删除  </a>
                 </td>
             </tr>
             {/volist}
@@ -127,14 +127,14 @@ $(document).ready(function(){
             {volist name="lists", id="list" key="key"}
             <tr>
                 <td>{$key}</td>
-                <td>{$list['home_message_name']}</td>
-                <td>{$list['home_message_title']}</td>
-                <td>{$list['home_message_time']}</td>
-                <td>{$list['home_message_audit_name']}</td>
-                <td>{$list['home_message_type_name']}</td>
+                <td>{$list['message_name']}</td>
+                <td>{$list['message_title']}</td>
+                <td>{$list['message_time']}</td>
+                <td>{$list['message_audit_name']}</td>
+                <td>{$list['message_type_name']}</td>
                 <td style="text-align:center;">
                     <a href="<?php echo WEB_PATH?>/admin/home.Message/message_detail" class="tablelink"> 查看 </a>|
-                    <a href="<?php echo WEB_PATH?>/admin/home.Message/delete_message/?home_message_no=<?php echo $list['home_message_no']?>" class="tablelink">  删除  </a></td>
+                    <a href="<?php echo WEB_PATH?>/admin/home.Message/delete_message/?message_no=<?php echo $list['message_no']?>" class="tablelink">  删除  </a></td>
             </tr>
             {/volist}
         </tbody>

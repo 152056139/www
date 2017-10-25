@@ -17,12 +17,12 @@
 	    {
 	        $postData = Request::instance() -> post();
 	        $Message = new MessageModel();
-	        $Message->home_message_title = $postData['title'];
-	        $Message->home_message_name = $postData['name'];
-	        $Message->home_message_phone = $postData['phone'];
-	        $Message->home_message_email = $postData['email'];
-	        $Message->home_message_content = $postData['content'];
-			$Message->home_message_type = 0;
+	        $Message->message_title = $postData['title'];
+	        $Message->message_name = $postData['name'];
+	        $Message->message_phone = $postData['phone'];
+	        $Message->message_email = $postData['email'];
+	        $Message->message_content = $postData['content'];
+			$Message->message_type = 0;
 	        $Message->save();
 	        $this->success("留言成功");
 	    }

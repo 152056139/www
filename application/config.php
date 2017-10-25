@@ -19,7 +19,7 @@ return [
     // 应用调试模式
     'app_debug'              => true,
     // 应用Trace
-    'app_trace'              => true,
+    'app_trace'              => false,
     //设置Trace显示方式
     'trace'                  => [
         //在当前HTML页面显示Trace信息
