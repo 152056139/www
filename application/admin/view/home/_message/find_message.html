@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="<?php echo WEB_PATH?>/admin/css/style.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo WEB_PATH?>/admin/css/select.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<?php echo WEB_PATH?>/admin/js/jquery.js"></script>
+<script type="text/javascript" src="<?php echo WEB_PATH?>/admin/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="<?php echo WEB_PATH?>/admin/js/select-ui.min.js"></script>
+<script type="text/javascript" src="<?php echo WEB_PATH?>/admin/editor/kindeditor.js"></script>
+
+<script type="text/javascript">
+    KE.show({
+        id : 'content7',
+        cssPath : './index.css'
+    });
+  </script>
+
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $(".select1").uedSelect({
+		width : 345
+	});
+	$(".select2").uedSelect({
+		width : 167
+	});
+	$(".select3").uedSelect({
+		width : 100
+	});
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".click").click(function(){
+  $(".tip").fadeIn(200);
+  });
+
+  $(".tiptop a").click(function(){
+  $(".tip").fadeOut(200);
+});
+
+  $(".sure").click(function(){
+  $(".tip").fadeOut(100);
+});
+
+  $(".cancel").click(function(){
+  $(".tip").fadeOut(100);
+});
+
+});
+</script>
+
+
+</head>
+
+
+<body>
+
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">数据表</a></li>
+    <li><a href="#">基本内容</a></li>
+    </ul>
+    </div>
+
+    <div class="rightinfo">
+    <!-- 包含tools，搜索的表单-->
+    {include file="../application/admin/view/home/_message/tools.html"}
+
+    <table class="tablelist">
+    	<thead>
+        	<tr>
+                <th>编号<i class="sort"></i></th>
+                <th>姓名</th>
+                <th>标题</th>
+                <th>时间</th>
+                <th>是否审核</th>
+                <th>消息类型</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {volist name="list", id="list" key="key"}
+            <tr>
+                <td>{$key}</td>
+                <td>{$list['home_message_name']}</td>
+                <td>{$list['home_message_title']}</td>
+                <td>{$list['home_message_time']}</td>
+                <td>{$list['home_message_audit']}</td>
+                <td>{$list['home_message_type']}</td>
+                <td style="text-align:center;"><a href="#" class="tablelink">   标记 </a>|<a href="#" class="tablelink">   查看 </a>|<a href="/admin/home.Message/delete_message/?home_message_no=<?php echo $list['home_message_no']?>" class="tablelink">  删除  </a></td>
+            </tr>
+            {/volist}
+        </tbody>
+    </table>
+
+    <div class="pagin">
+    	<div class="message">共<i class="blue">{$count}</i>条记录</div>
+        {$page}
+
+    </div>
+
+
+    <div class="tip">
+    	<div class="tiptop"><span>提示信息</span><a></a></div>
+
+      <div class="tipinfo">
+        <span><img src="<?php echo WEB_PATH?>/admin/images/ticon.png" /></span>
+        <div class="tipright">
+        <p>是否确认对信息的修改 ？</p>
+        <cite>如果是请点击确定按钮 ，否则请点取消。</cite>
+        </div>
+        </div>
+
+        <div class="tipbtn">
+        <input name="" type="button"  class="sure" value="确定" />&nbsp;
+        <input name="" type="button"  class="cancel" value="取消" />
+        </div>
+
+    </div>
+
+
+
+
+    </div>
+
+    <script type="text/javascript">
+	$('.tablelist tbody tr:odd').addClass('odd');
+	</script>
+</body>
+</html>
