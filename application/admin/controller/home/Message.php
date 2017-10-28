@@ -16,13 +16,15 @@
         **/
         public function message_list()
         {
+            //标记方法类型
+            Cookie::set('page_type', 'list');
             //提取全部的数据
             $messages = MessageModel::all();
             if($messages != null)
             {
                 foreach ($messages as $key => $message)
                 {
-                    $list = $message->paginate(2);
+                    $list = $message->paginate(10);
                     $page = $list->render();
                 }
                 //其他的数据全部原样返回给页面
@@ -42,6 +44,8 @@
         **/
         public function find_message()
         {
+            //标记方法类型
+            Cookie::set('page_type', 'find');
             //获取表单传过来的查询条件
             $param = Request::instance()->param();
             //如果点的是查询
@@ -73,30 +77,25 @@
                 //处理时间
 
             }
-
             //获取留言
-            $messages = Db::table('home_message')
-                ->where('home_message_audit', Cookie::get('method_audit'), Cookie::get('audit'))
-                ->where('home_message_type', Cookie::get('method_type'), Cookie::get('type'))
-                ->paginate(2);
-            //获取到的数量
-            $count = count($messages);
+            $messages = MessageModel::find_message();
             //判断是否查询结果为空
             if(count($messages) != 0) {
                 //分页
                 $page = $messages->render();
                 //其他的数据全部原样返回给页面
-                $this->assign('list', $messages);
-                $this->assign('count',$count);
+                $this->assign('lists', $messages);
                 $this->assign('page',$page);
                 //取回打包的数据并且返回给页面
-                return $this->fetch('find_message');
+                return $this->fetch('message_list');
             }
             else {
                 return $this->fetch('errors');
             }
 
         }
+
+
         /*
         **删除留言
         **
@@ -117,11 +116,11 @@
         }
 
         /*
-        **查看留言
+        **查看留言详情
         **
         **/
-        public function detail_message()
+        public function message_detail()
         {
-
+            return $this->fetch('message_detail');
         }
     }

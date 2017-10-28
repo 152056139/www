@@ -121,7 +121,7 @@ h2{font-weight:normal;}
 .pagin .pagination li {float:left;}
 .pagin .pagination li  span{float:left;width:31px;height:28px;border:1px solid #DDD; text-align:center;line-height:30px;border-left:none;color:#3399d5;}
 .pagin .pagination li  a{float:left;width:31px;height:28px;border:1px solid #DDD; text-align:center;line-height:30px;border-left:none;color:#3399d5;}
-.pagin .pagination li :first-child a{border-left:1px solid #DDD;}
+.pagin .pagination li:first-child a{border-left:1px solid #DDD;}
 .pagin .pagination li:first-child a{border-bottom-left-radius:5px;border-top-left-radius:5px;}
 .pagin .pagination li:last-child a{border-bottom-right-radius:5px;border-top-right-radius:5px;}
 .pagin .pagination li:active, .pagin .pagination li.active span{background:#f5f5f5; cursor:default;color:#737373;}

@@ -2,6 +2,8 @@
     namespace app\admin\model\home;
 
     use think\Model;
+    use think\Db;
+    use think\Cookie;
     use think\Controller as MessageController;
 
     class Message extends Model
@@ -22,6 +24,19 @@
             return $home_message_type[$value];
         }
 
+        //查找留言
+        public static function find_message()
+        {
 
-        
+            $messages = Db::table('home_message')
+                ->alias('a')
+                ->join('home_message_type b', 'b.home_message_type_no = a.home_message_type')
+                ->join('home_message_audit c', 'c.home_message_audit_no = a.home_message_audit')
+                ->where('home_message_audit', Cookie::get('method_audit'), Cookie::get('audit'))
+                ->where('home_message_type', Cookie::get('method_type'), Cookie::get('type'))
+                ->paginate(10);
+            //返回
+            return $messages;
+        }
+
     }
