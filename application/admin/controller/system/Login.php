@@ -6,6 +6,7 @@
     use think\Cookie;
     use think\Session;
     use think\Db;
+    use think\Config;
 
     use app\admin\model\system\Admin as AdminModel;
 
