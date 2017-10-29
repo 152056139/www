@@ -50,4 +50,6 @@ return [
     'datetime_format' => 'Y-m-d H:i:s',
     // 是否需要进行SQL性能分析
     'sql_explain'     => false,
+    // 判断是否是第一次登录系统
+    'is_first_login'  => false,
 ];
